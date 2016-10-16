@@ -1,4 +1,5 @@
 ﻿using MVC5Course.Models;
+using MVC5Course.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -77,17 +78,53 @@ namespace MVC5Course.Controllers
         }
 
 
+        //public ActionResult Add20Persent()
+        //{
+        //    var data = db.Product.Where(p => p.ProductName.Contains("White"));
+        //    foreach (var item in data)
+        //    {
+        //        item.Price = item.Price * 1.2m;
+        //    }
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
+
         public ActionResult Add20Persent()
         {
-            var data = db.Product.Where(p => p.ProductName.Contains("White"));
-            foreach (var item in data)
-            {
-                item.Price = item.Price * 1.2m;
-            }
-            db.SaveChanges();
+            //var data = db.Product.Where(p => p.ProductName.Contains("White"));
+            //foreach (var item in data)
+            //{
+            //    item.Price = item.Price * 1.2m;
+            //}
+            //db.SaveChanges();
+            db.Database.ExecuteSqlCommand("Update Product Set Price = Price * 1.2 Where ProductName like @p0", "%White%");
             return RedirectToAction("Index");
         }
 
+
+        public ActionResult ClientContribution()
+        {
+            var data = db.vw_ClientContribution.Take(10);
+            return View(data);
+        }
+
+
+        public ActionResult ClientContribution2(string keyword = "Mary")
+        {
+            var data = db.Database.SqlQuery<ClientContributionViewModel>(@" 
+            SELECT c.ClientId, c.FirstName, c.LastName, (SELECT SUM(o.OrderTotal) FROM [dbo].[Order] o 
+		    WHERE o.ClientId = c.ClientId) as OrderTotal
+	        FROM [dbo].[Client] as c 
+            WHERE c.FirstName like @p0 ", "%" + keyword + "%");
+            return View(data);
+        }
+
+
+        public ActionResult ClientContribution3(string keyword = "Mary")
+        {
+            var data = db.usp_GetClientContribution(keyword);
+            return View(data);
+        }
 
     }
 }

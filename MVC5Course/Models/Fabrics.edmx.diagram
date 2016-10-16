@@ -4,16 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="212217abdcef406884dc8408c360a692" Name="Diagram1">
-        <EntityTypeShape EntityType="FabricsModel.Client" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="FabricsModel.Occupation" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="FabricsModel.Order" Width="1.5" PointX="5.125" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FabricsModel.OrderLine" Width="1.5" PointX="7.625" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FabricsModel.Product" Width="1.5" PointX="8.25" PointY="0.5" IsExpanded="true" />
-        <AssociationConnector Association="FabricsModel.FK_Client_Occupation" ManuallyRouted="false" />
-        <AssociationConnector Association="FabricsModel.fk_Order_ClientId" ManuallyRouted="false" />
+      <Diagram DiagramId="212217abdcef406884dc8408c360a692" Name="Product">
+        <EntityTypeShape EntityType="FabricsModel.Order" Width="1.5" PointX="2.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricsModel.OrderLine" Width="1.5" PointX="7.375" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FabricsModel.Product" Width="1.5" PointX="5.125" PointY="1.125" IsExpanded="true" FillColor="0, 64, 0" />
         <AssociationConnector Association="FabricsModel.fk_OrderLine_OrderId" ManuallyRouted="false" />
         <AssociationConnector Association="FabricsModel.fk_OrderLine_ProductId" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="FabricsModel.vw_ClientContribution" Width="1.5" PointX="0.875" PointY="0.5" />
+      </Diagram>
+      <Diagram DiagramId="47f637879e054ad89829fdf1d1981cb9" Name="Client" >
+        <EntityTypeShape EntityType="FabricsModel.Client" Width="1.5" PointX="5.25" PointY="0.625" FillColor="128, 64, 64" />
+        <EntityTypeShape EntityType="FabricsModel.Occupation" Width="1.5" PointX="2.625" PointY="1.5" />
+        <AssociationConnector Association="FabricsModel.FK_Client_Occupation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
