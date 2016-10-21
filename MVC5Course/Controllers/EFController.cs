@@ -97,6 +97,7 @@ namespace MVC5Course.Controllers
             //    item.Price = item.Price * 1.2m;
             //}
             //db.SaveChanges();
+            // 使用 ExecuteSqlCommand 後不需再使用 db.SaveChanges()
             db.Database.ExecuteSqlCommand("Update Product Set Price = Price * 1.2 Where ProductName like @p0", "%White%");
             return RedirectToAction("Index");
         }
