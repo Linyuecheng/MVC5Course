@@ -19,7 +19,8 @@ namespace MVC5Course.Controllers
         public ActionResult Index()
         {
             //return View(db.Product.ToList());
-            return View(repo.All().ToList());
+            //return View(repo.All().ToList());
+            return View(repo.Get所有資料_依據ProductId排序(10).ToList());
         }
 
         // GET: Products/Details/5
@@ -121,8 +122,9 @@ namespace MVC5Course.Controllers
             //Product product = db.Product.Find(id);
             Product product = repo.Find(id);
             //db.Product.Remove(product);
-            product.IsDeleted = true;
+            //product.IsDeleted = true;
             //db.SaveChanges();
+            repo.Delete(product);  // 改用新的覆寫API
             repo.UnitOfWork.Commit();
             return RedirectToAction("Index");
         }
