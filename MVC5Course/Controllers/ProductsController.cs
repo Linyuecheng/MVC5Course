@@ -16,6 +16,7 @@ namespace MVC5Course.Controllers
         ProductRepository repo = RepositoryHelper.GetProductRepository();
 
         // GET: Products
+        [Route("Prod/ListAll")]     //網址列會變為：http://localhost:10681/Prod/ListAll
         public ActionResult Index()
         {
             //return View(db.Product.ToList());
