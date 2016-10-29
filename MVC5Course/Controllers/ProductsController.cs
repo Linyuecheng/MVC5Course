@@ -10,13 +10,13 @@ using MVC5Course.Models;
 
 namespace MVC5Course.Controllers
 {
-    public class ProductsController : Controller
+    public class ProductsController : BaseController
     {
         //private FabricsEntities db = new FabricsEntities();
         ProductRepository repo = RepositoryHelper.GetProductRepository();
 
         // GET: Products
-        [Route("Prod/ListAll")]     //網址列會變為：http://localhost:10681/Prod/ListAll
+        //[Route("Prod/ListAll")]     //網址列會變為：http://localhost:10681/Prod/ListAll
         public ActionResult Index()
         {
             //return View(db.Product.ToList());
