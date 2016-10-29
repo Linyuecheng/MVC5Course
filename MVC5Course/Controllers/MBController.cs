@@ -10,9 +10,11 @@ namespace MVC5Course.Controllers
     public class MBController : BaseController
     {
         // GET: MB
+        [LocalDebugOnly]
+        [Share頁面上常用的ViewBag變數資料]
         public ActionResult Index()
         {
-            ViewData["Temp1"] = "暫存資料 Temp1";
+            //ViewData["Temp1"] = "暫存資料 Temp1";  // 原本這段被搬到 ActionFilter 去了
 
             return View();
         }
