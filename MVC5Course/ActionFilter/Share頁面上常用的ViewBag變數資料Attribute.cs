@@ -7,7 +7,14 @@ namespace MVC5Course.Controllers
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
+            // filterContext.ActionParameters 
             filterContext.Controller.ViewData["Temp1"] = "暫存資料 Temp1ab";
+        }
+
+
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            base.OnActionExecuted(filterContext);
         }
     }
 }
