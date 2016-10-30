@@ -28,9 +28,13 @@ namespace MVC5Course.Models
         public int ProductId { get; set; }
         
         [StringLength(80, ErrorMessage="欄位長度不得大於 80 個字元")]
+        [Required]
         public string ProductName { get; set; }
+        [Required]
         public Nullable<decimal> Price { get; set; }
+        [Required]
         public Nullable<bool> Active { get; set; }
+        [Required]
         public Nullable<decimal> Stock { get; set; }
         [Required]
         public bool IsDeleted { get; set; }
