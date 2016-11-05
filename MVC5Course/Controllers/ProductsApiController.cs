@@ -21,12 +21,14 @@ namespace MVC5Course.Controllers
             db.Configuration.LazyLoadingEnabled = false;
         }
 
+        [Route("prods")]        // 網址變為 http://localhost:10681/prods
         // GET: api/ProductsApi
         public IQueryable<Product> GetProduct()
         {
             return db.Product;
         }
 
+        [Route("prods/{id}")]
         // GET: api/ProductsApi/5
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(int id)
@@ -38,6 +40,17 @@ namespace MVC5Course.Controllers
             }
 
             return Ok(product);
+        }
+
+        [Route("prods/{id}/OrderLine")]
+        public IHttpActionResult GetProductOrderLine(int id)
+        {
+            Product product = db.Product.Find(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Ok(db.OrderLine.Where(p => p.ProductId == id).ToList());
         }
 
         // PUT: api/ProductsApi/5
