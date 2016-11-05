@@ -15,6 +15,11 @@ namespace MVC5Course.Controllers
             return View();
         }
 
+        public ActionResult GetTime()
+        {
+            return Content(DateTime.Now.ToString());
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
